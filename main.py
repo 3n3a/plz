@@ -29,7 +29,7 @@ if __name__=="__main__":
     parser.extract_columns(["POSTLEITZAHL", "PLZ_ZZ", "ORTBEZ18", "KANTON", "SPRACHCODE", "Geokoordinaten"])
 
     ## Combine Columns
-    parser.combine_columns("POSTLEITZAHL", "PLZ_ZZ", "PLZ6")
+    parser.combine_columns(column_one="POSTLEITZAHL", column_two="PLZ_ZZ", final_column="PLZ6")
 
     # Export File
     for dest_file in dest_files:
