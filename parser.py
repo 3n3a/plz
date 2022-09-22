@@ -1,6 +1,8 @@
 import mimetypes
 import pandas as pd
 
+from sql_export import SQLExport
+
 class Parser:
     def __init__(self) -> None:
         self.df = pd.DataFrame()
@@ -37,8 +39,17 @@ class Parser:
                 self.df.to_json(filename, orient="records")
             case 'text/csv':
                 self.df.to_csv(filename, index=False)
+            case 'application/sql':
+                self.to_sql(filename)
             case other:
                 raise Exception("Invalid output file type.")
+
+    def to_sql(self, filename):
+        data = self.df.to_dict(orient='records')
+        sql_export = SQLExport(data)
+        sql_export.export()
+        sql_export.save(filename)
+
 
     def __del__(self):
         print("Finished with conversion and filtering.")
