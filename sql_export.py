@@ -1,5 +1,8 @@
 import math
 
+"""
+Genereates Postgres-Ready SQL INSERTS
+"""
 class SQLExport:
     def __init__(self, data) -> None:
         self.data = data
