@@ -22,7 +22,7 @@ INSERT INTO addresses(POSTLEITZAHL,PLZ_ZZ,ORTBEZ18,KANTON,SPRACHCODE,Geokoordina
             location = self.__safe_string(item["ORTBEZ18"])
             canton = item["KANTON"]
             lang = item["SPRACHCODE"]
-            coords = "NULL" if len(str(item["Geokoordinaten"])) < 4 else item["Geokoordinaten"]
+            coords = "NULL" if len(str(item["Geokoordinaten"])) < 4 else "'" + item["Geokoordinaten"] + "'"
             plz6 = item["PLZ6"]
 
             if i == len(self.data)-1: # last line
