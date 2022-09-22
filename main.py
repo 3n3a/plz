@@ -1,4 +1,5 @@
 import base64
+from zipfile import ZipFile
 from parser import Parser
 from downloader import Downloader
 
@@ -32,5 +33,8 @@ if __name__=="__main__":
     parser.combine_columns(column_one="POSTLEITZAHL", column_two="PLZ_ZZ", final_column="PLZ6")
 
     # Export File
-    for dest_file in dest_files:
-        parser.bottle_data(dest_file)
+    with ZipFile('plz_extracted.zip', 'w') as myzip:
+        for dest_file in dest_files:
+            parser.bottle_data(dest_file)
+            myzip.write(dest_file)
+
