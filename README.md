@@ -1,5 +1,6 @@
 # plz
 swiss postalcodes downloader / extractor
+plz = pleaseeee 🤪😎
 
 ## usage
 
